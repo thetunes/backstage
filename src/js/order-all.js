@@ -63,4 +63,72 @@ function displayOrders(orders) {
     });
 }
 
-window.onload = getOrders;
+function countOrders() {
+    console.log("Hei function started!")
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+
+    fetch('http://127.0.0.1:8080/api/order/count', requestOptions)
+        .then(response => {
+            console.log('Raw Response:', response);
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === "success") {
+                displayCount(data);
+            } else {
+                console.error('API Error:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Fetch Error:', error);
+        });
+}
+
+// Display orders count in the table
+function displayCount(orders) {
+    const tableBody = document.getElementById('statsCard');
+    tableBody.innerHTML = '';
+
+    const data = document.createElement('div');
+        
+    data.innerHTML = `
+        <a href="index.html">
+            <div class="w-full bg-blue-700 pt-24 pb-4 px-4 rounded-xl">
+                <div class="">
+                    <h1 class="font-extrabold text-xl">All orders</h1>
+                    <p class="text-slate-400">${orders.total_orders} orders</p>    
+                </div>
+            </div>
+        </a>
+
+        <a href="complete.html">
+            <div class="w-full bg-green-700 pt-24 pb-4 px-4 rounded-xl">
+                <div class="">
+                    <h1 class="font-extrabold text-xl">Complete Orders</h1>
+                    <p class="text-slate-400">${orders.true_orders} Orders</p>    
+                </div>
+            </div>
+        </a>
+
+        <a href="o2c.html">
+            <div class="w-full bg-red-800 pt-24 pb-4 px-4 rounded-xl">
+                <div class="">
+                    <h1 class="font-extrabold text-xl">Orders to confirm</h1>
+                    <p class="text-slate-400">${orders.nostat_orders} Orders</p>    
+                </div>
+            </div>    
+        </a>
+    `;
+
+    tableBody.appendChild(data);
+}
+
+function loadData() {
+    countOrders();
+    getOrders();
+}
+
+window.onload = loadData;
