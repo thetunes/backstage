@@ -12,45 +12,11 @@
     <div class="container mx-auto px-32">
         <!-- Action Bar Start-->
         <div id="action-bar" class="bg-gray-900 w-full py-6 px-8 my-8 rounded-2xl">
-            <span class="font-extrabold">Admin Panel</span>
+            <a href="index.html">
+                <span class="font-extrabold">Back</span>
+            </a>
         </div>
         <!-- Action Bar End-->
-        
-        <!-- Stats Start-->
-        <div id="cards-body" class="bg-gray-900 w-full py-6 px-8 my-8 rounded-2xl">
-            <h1 class="font-extrabold text-3xl">Stats</h1>
-
-            <div class="columns-3 my-8">
-
-                <a href="index.html">
-                    <div class="w-full bg-blue-700 pt-24 pb-4 px-4 rounded-xl">
-                        <div class="">
-                            <h1 class="font-extrabold text-xl">All orders</h1>
-                            <p class="text-slate-400">200 orders</p>    
-                        </div>
-                    </div>
-                </a>
-
-                <a href="complete.html">
-                    <div class="w-full bg-green-700 pt-24 pb-4 px-4 rounded-xl">
-                        <div class="">
-                            <h1 class="font-extrabold text-xl">Complete Orders</h1>
-                            <p class="text-slate-400">12 Orders</p>    
-                        </div>
-                    </div>
-                </a>
-
-                <a href="o2c.html">
-                    <div class="w-full bg-red-800 pt-24 pb-4 px-4 rounded-xl">
-                        <div class="">
-                            <h1 class="font-extrabold text-xl">Orders to confirm</h1>
-                            <p class="text-slate-400">19 Orders</p>    
-                        </div>
-                    </div>    
-                </a>
-            </div>
-        </div>
-        <!-- Stats End-->
 
         <!-- Table: Order To Confirm Start-->
         <div id="cards-body" class="bg-gray-900 w-full py-6 px-8 my-8 rounded-2xl">
@@ -65,7 +31,7 @@
                                     Order ID
                                 </th>
                                 <th scope="col" class="px-6 py-3 w-24">
-                                    Status
+                                    Action
                                 </th>
                             </tr>
                         </thead>
@@ -78,7 +44,7 @@
         </div>
         <!-- Table: Order To Confirm End-->
     </div>
-    <script src="src/js/order-all.js"></script>    
+    <script src="src/js/order-done.js"></script>    
 </body>
 
 </html>
