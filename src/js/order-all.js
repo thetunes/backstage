@@ -104,7 +104,7 @@ function displayCount(orders) {
         <a href="index.html">
             <div class="w-full bg-blue-700 pt-24 pb-4 px-4 rounded-xl">
                 <div class="">
-                    <h1 class="font-extrabold text-xl">All orders</h1>
+                    <h1 class="font-extrabold text-xl">Your events</h1>
                     <p class="text-slate-400">${orders.total_orders} orders</p>    
                 </div>
             </div>
@@ -113,7 +113,7 @@ function displayCount(orders) {
         <a href="complete.html">
             <div class="w-full bg-green-700 pt-24 pb-4 px-4 rounded-xl">
                 <div class="">
-                    <h1 class="font-extrabold text-xl">Complete Orders</h1>
+                    <h1 class="font-extrabold text-xl">Sold events</h1>
                     <p class="text-slate-400">${orders.true_orders} Orders</p>    
                 </div>
             </div>
@@ -122,7 +122,7 @@ function displayCount(orders) {
         <a href="o2c.html">
             <div class="w-full bg-red-800 pt-24 pb-4 px-4 rounded-xl">
                 <div class="">
-                    <h1 class="font-extrabold text-xl">Orders to confirm</h1>
+                    <h1 class="font-extrabold text-xl">Deleted events</h1>
                     <p class="text-slate-400">${orders.nostat_orders} Orders</p>    
                 </div>
             </div>    
