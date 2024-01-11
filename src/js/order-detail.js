@@ -37,6 +37,58 @@ function getDetail() {
         });
 }
 
+function confirmOrder(orderId) {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+    };
+
+    fetch(`https://eclipse.herobuxx.me/api/order/done?id=${orderId}`, requestOptions)
+        .then(response => {
+            console.log('Confirmation Response:', response);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Confirmation Data:', data);
+            if (data.status === "success") {
+                // Assuming you want to update the UI after confirmation, you can reload the orders.
+                getOrders();
+            } else {
+                console.error('Confirmation Error:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Confirmation Fetch Error:', error);
+        });
+        location.reload();
+}
+
+function cancelOrder(orderId) {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+    };
+
+    fetch(`https://eclipse.herobuxx.me/api/order/cancel?id=${orderId}`, requestOptions)
+        .then(response => {
+            console.log('Cancelation Response:', response);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Cancelation Data:', data);
+            if (data.status === "success") {
+                // Assuming you want to update the UI after confirmation, you can reload the orders.
+                getOrders();
+            } else {
+                console.error('Cancelation Error:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Cancelation Fetch Error:', error);
+        });
+        location.reload();
+}
+
 // Display orders in the table
 function displayDetail(order) {
     const tableBody = document.getElementById('ordersDetail');
@@ -66,8 +118,12 @@ function displayDetail(order) {
                 </div>
             </div>
             <div class="relative overflow-x-auto py-6">
+                <h3 class="font-extrabold text-2xl">Status</h3>
+                <span>Complete</span>
+            </div>
+            <div class="relative overflow-x-auto py-6">
                 <div class="text-center">
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full w-1/3">
+                    <button onClick='cancelOrder("${order.id}")' class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full w-1/3">
                         Cancel
                     </button>    
                 </div>
@@ -94,6 +150,10 @@ function displayDetail(order) {
                     <h3 class="font-extrabold text-2xl">Ordered At</h3>
                     <span>${order.CreatedAt}</span>
                 </div>
+                <div class="relative overflow-x-auto py-6">
+                    <h3 class="font-extrabold text-2xl">Status</h3>
+                    <span>Cancelled</span>
+                </div>
             </div>
         </div>
         `;
@@ -119,12 +179,16 @@ function displayDetail(order) {
                 </div>
             </div>
             <div class="relative overflow-x-auto py-6">
+                <h3 class="font-extrabold text-2xl">Status</h3>
+                <span>Need to confitm</span>
+            </div>
+            <div class="relative overflow-x-auto py-6">
                 <div class="text-center">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-1/3">
+                    <button onClick='confirmOrder("${order.id}")' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-1/3">
                         Confirm
                     </button>    
 
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full w-1/3">
+                    <button onClick='cancelOrder("${order.id}")' class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full w-1/3">
                         Cancel
                     </button>    
                 </div>
