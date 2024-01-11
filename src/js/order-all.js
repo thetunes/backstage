@@ -33,7 +33,9 @@ function displayOrders(orders) {
         if (order.status === "true") {
             data.innerHTML = `
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    ${order.id}
+                <a href="detail.html?id=${order.id}">
+                ${order.id}
+                </a>
                 </th>
                 <td class="px-6 py-4">
                     Complete
@@ -42,7 +44,9 @@ function displayOrders(orders) {
         } else if (order.status === "false") {
             data.innerHTML = `
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    ${order.id}
+                <a href="detail.html?id=${order.id}">
+                ${order.id}
+                </a>
                 </th>
                 <td class="px-6 py-4">
                     Cancelled
@@ -51,7 +55,9 @@ function displayOrders(orders) {
         } else {
             data.innerHTML = `
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    ${order.id}
+                <a href="detail.html?id=${order.id}">
+                ${order.id}
+                </a>
                 </th>
                 <td class="px-6 py-4">
                     Need to Confirm
