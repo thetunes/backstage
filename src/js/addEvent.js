@@ -30,7 +30,6 @@ async function getUserId() {
 
         if (data.status === "success") {
             return data.data.user_id;
-            console.log(data.data.user_id);
         } else {
             console.error('API Error:', data.message);
             return null;
@@ -51,7 +50,7 @@ async function submitEvent() {
     const date = document.getElementById('date').value;
     const description = document.getElementById('description').value;
     const location = document.getElementById('location').value;
-    const promotorid = await getUserId(); // Wait for getUserId to resolve
+    const promotorid = await getUserId();
 
     const userDetails = {
         id: ticketnum,
@@ -63,7 +62,6 @@ async function submitEvent() {
         description: description,
         promotorid: promotorid,
     };
-    console.log("HeroBuxx Input: " + JSON.stringify(userDetails))
     try {
         const response = await fetch(Url, {
             method: 'POST',
