@@ -45,6 +45,17 @@ async function displayTickets(orders) {
                 ${order.id}
                 </a>
                 </th>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <a href="detail.html?id=${order.id}">
+                ${order.artistid}
+                </a>
+                </th>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <a href="detail.html?id=${order.id}">
+                ${order.title}
+                </a>
+                </th>
+
                 <td class="px-6 py-4">
                     <button onClick='confirmOrder("${order.id}")' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                         Confirm
