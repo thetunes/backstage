@@ -38,19 +38,19 @@ async function displayTickets(orders) {
             console.log('Displaying Order:', order);
         
             const data = document.createElement('tr');
-            data.className = "bg-white border-b dark:bg-gray-800 dark:border-gray-700";
+            data.className = "bg-white border-b dark:bg-stone-800 dark:border-stone-700";
             data.innerHTML = `
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-4 font-medium text-stone-900 whitespace-nowrap dark:text-white">
                 <a href="detail.html?id=${order.id}">
                 ${order.id}
                 </a>
                 </th>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-4 font-medium text-stone-900 whitespace-nowrap dark:text-white">
                 <a href="detail.html?id=${order.id}">
                 ${order.artistid}
                 </a>
                 </th>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-4 font-medium text-stone-900 whitespace-nowrap dark:text-white">
                 <a href="detail.html?id=${order.id}">
                 ${order.title}
                 </a>
