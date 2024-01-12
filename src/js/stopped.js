@@ -1,29 +1,3 @@
-function removeTicket(tciketId) {
-    var requestOptions = {
-        method: 'POST',
-        redirect: 'follow'
-    };
-
-    fetch(`https://eclipse.herobuxx.me/api/ticket/remove?id=${tciketId}`, requestOptions)
-        .then(response => {
-            console.log('Confirmation Response:', response);
-            return response.json();
-        })
-        .then(data => {
-            console.log('Confirmation Data:', data);
-            if (data.status === "success") {
-                // Assuming you want to update the UI after confirmation, you can reload the orders.
-                window.location.reload();
-            } else {
-                console.error('Confirmation Error:', data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Confirmation Fetch Error:', error);
-        });
-}
-
-
 async function displayTickets(orders) {
     const { user_id } = await getUserId(); // Get the user_id
 
@@ -34,7 +8,7 @@ async function displayTickets(orders) {
         console.log('Order Status:', order.status);
 
         // Check if the user_id matches the promotorid and the status is "true" before displaying the order
-        if (order.promotorid === user_id && order.status !== "false") {
+        if (order.promotorid === user_id && order.status === "false") {
             console.log('Displaying Order:', order);
         
             const data = document.createElement('tr');
@@ -55,12 +29,6 @@ async function displayTickets(orders) {
                 ${order.title}
                 </a>
                 </th>
-
-                <td class="px-6 py-4">
-                    <button onClick='removeTicket("${order.id}")' class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
-                        Stop Listing
-                    </button>
-                </td>
             `;
             tableBody.appendChild(data);
         }

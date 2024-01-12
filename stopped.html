@@ -13,40 +13,9 @@
     <div class="container mx-auto px-32">
         <!-- Action Bar Start-->
         <div id="action-bar" class="bg-stone-900 w-full py-6 px-8 my-8 rounded-2xl">
-            <span class="font-extrabold text-2xl">The Tunes: Promotor Dashboard</span>
-            <div id="action-bar" class="bg-stone-700 w-full py-6 px-8 my-8 rounded-2xl text-right">
-                <a href="addevent.html" class="no-underline px-3">Add new event</a>
-                <button onclick="logoutBtn()" class="bg-red-700 hover:bg-red-400 text-white font-bold py-2 px-4 rounded-full">
-                    Log Out
-                </button>  
-            </div>
+            <a href="index.html" class="no-underline px-3">Back</a>
         </div>
         <!-- Action Bar End-->
-
-
-        <div id="cards-body" class="bg-stone-900 w-full py-6 px-8 my-8 rounded-2xl">
-            <h1 class="font-extrabold text-3xl">Stats</h1>
-
-            <div id="statsCard" class="columns-2 my-8">
-                <a href="addevent.html">
-                    <div class="w-full bg-green-700 hover:bg-green-800 pt-24 pb-4 px-4 rounded-xl">
-                        <div class="">
-                            <h1 class="font-extrabold text-xl">Add new event</h1>
-                            <p class="text-stone-300">Create new listing for your event</p>    
-                        </div>
-                    </div>    
-            </a>
-            <a href="stopped.html">
-                <div class="w-full bg-red-700 hover:bg-red-800 pt-24 pb-4 px-4 rounded-xl">
-                    <div class="">
-                        <h1 class="font-extrabold text-xl">Stopped Events</h1>
-                        <p class="text-stone-300">Check your stopped events</p>    
-                    </div>
-                </div>    
-        </a>
-            </div>
-        </div>
-
 
         <!-- Table: Order To Confirm Start-->
         <div id="cards-body" class="bg-stone-900 w-full py-6 px-8 my-8 rounded-2xl">
@@ -66,9 +35,6 @@
                                 <th scope="col" class="px-6 py-3">
                                     Title
                                 </th>
-                                <th scope="col" class="px-6 py-3 w-24">
-                                    Action
-                                </th>
                             </tr>
                         </thead>
                         <tbody id="order2confirm">
@@ -80,7 +46,7 @@
         </div>
         <!-- Table: Order To Confirm End-->
     </div>
-    <script src="src/js/userEvent.js"></script>    
+    <script src="src/js/stopped.js"></script>    
     <script src="src/js/logout.js"></script>
 </body>
 
