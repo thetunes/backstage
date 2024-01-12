@@ -24,16 +24,17 @@ function confirmOrder(orderId) {
 }
 
 
-// Display orders in the table
-function displayOrders(orders) {
+async function displayTickets(orders) {
+    const { user_id } = await getUserId(); // Get the user_id
+
     const tableBody = document.getElementById('order2confirm');
     tableBody.innerHTML = '';
 
     orders.forEach(order => {
         console.log('Order Status:', order.status);
 
-        // Check if the status is "true" before displaying the order
-        if (order.status === "") {
+        // Check if the user_id matches the promotorid and the status is "true" before displaying the order
+        if (order.promotorid === user_id && order.status !== "false") {
             console.log('Displaying Order:', order);
         
             const data = document.createElement('tr');
@@ -55,28 +56,78 @@ function displayOrders(orders) {
     });
 }
 
-function getOrders() {
+async function getUserId() {
+    try {
+        // Get token from the cookie
+        const cookies = document.cookie.split(';');
+        let token = null;
+        for (const cookie of cookies) {
+            const [name, value] = cookie.trim().split('=');
+            if (name === 'token_prm') {
+                token = value;
+                break;
+            }
+        }
+
+        if (!token) {
+            console.error('Token not found in cookie');
+            return { token: null, user_id: null };
+        }
+
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json',
+            },
+            redirect: 'follow'
+        };
+
+        const response = await fetch('https://eclipse.herobuxx.me/api/auth/id', requestOptions);
+        const data = await response.json();
+
+        if (data.status === "success") {
+            return { token, user_id: data.data.user_id };
+        } else {
+            console.error('API Error:', data.message);
+            return { token: null, user_id: null };
+        }
+    } catch (error) {
+        console.error('Fetch Error:', error);
+        return { token: null, user_id: null };
+    }
+}
+
+async function getTickets() {
+    const { token, user_id } = await getUserId();
+
+    if (!token || !user_id) {
+        console.error('Unable to get token or user ID');
+        return;
+    }
+
     var requestOptions = {
         method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
+        },
         redirect: 'follow'
     };
 
-    fetch('https://eclipse.herobuxx.me/api/order', requestOptions)
+    fetch(`https://eclipse.herobuxx.me/api/ticket`, requestOptions)
         .then(response => {
             console.log('Raw Response:', response);
             return response.json();
         })
         .then(data => {
             console.log('Parsed JSON Data:', data);
-            if (data.status === "success") {
-                displayOrders(data.data);
-            } else {
-                console.error('API Error:', data.message);
-            }
+            displayTickets(data.data);
         })
         .catch(error => {
             console.error('Fetch Error:', error);
         });
 }
 
-window.onload = getOrders;
+
+window.onload = getTickets;
