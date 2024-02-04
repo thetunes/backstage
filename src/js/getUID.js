@@ -11,7 +11,7 @@ async function getUserId() {
             redirect: 'follow'
         };
 
-        const response = await fetch('https://eclipse.herobuxx.me/api/auth/id', requestOptions);
+        const response = await fetch('http://34.128.102.98/api/auth/id', requestOptions);
         const data = await response.json();
 
         if (data.status === "success") {

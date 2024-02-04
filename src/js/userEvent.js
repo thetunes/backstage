@@ -4,7 +4,7 @@ function removeTicket(tciketId) {
         redirect: 'follow'
     };
 
-    fetch(`https://eclipse.herobuxx.me/api/ticket/remove?id=${tciketId}`, requestOptions)
+    fetch(`http://34.128.102.98/api/ticket/remove?id=${tciketId}`, requestOptions)
         .then(response => {
             console.log('Confirmation Response:', response);
             return response.json();
@@ -94,7 +94,7 @@ async function getUserId() {
             redirect: 'follow'
         };
 
-        const response = await fetch('https://eclipse.herobuxx.me/api/auth/id', requestOptions);
+        const response = await fetch('http://34.128.102.98/api/auth/id', requestOptions);
         const data = await response.json();
 
         if (data.status === "success") {
@@ -126,7 +126,7 @@ async function getTickets() {
         redirect: 'follow'
     };
 
-    fetch(`https://eclipse.herobuxx.me/api/ticket`, requestOptions)
+    fetch(`http://34.128.102.98/api/ticket`, requestOptions)
         .then(response => {
             console.log('Raw Response:', response);
             return response.json();
